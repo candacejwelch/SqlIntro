@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using MySql.Data.MySqlClient;
 
 namespace SqlIntro
@@ -7,7 +8,7 @@ namespace SqlIntro
     {
         static void Main(string[] args)
         {
-            var connectionString = "Server=localhost;Database=adventureworks;Uid=root;Pwd=1234;"; //get connectionString format from connectionstrings.com and change to match your database
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString; //get connectionString format from connectionstrings.com and change to match your database
             
 
             using (var conn = new MySqlConnection(connectionString))
@@ -39,6 +40,9 @@ namespace SqlIntro
                 });
 
                 repo.UpdateProduct(new Product { ProductId = 1, Name = "Candace" });
+
+                repo.LeftJoin();
+                repo.InnerJoin();
                 Console.ReadLine();
             }
             

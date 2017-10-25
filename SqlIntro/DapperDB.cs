@@ -58,5 +58,16 @@ namespace SqlIntro
                              "@FinishedGoodsFlag, @Color, @SafetyStockLevel, @ReorderPoint, @DaysToManufacture, @StandardCost," +
                              "@ModifiedDate, @SellStartDate, @ListPrice, @RowGuid)", prod);
         }
+
+        public IEnumerable<Product> LeftJoin()
+        { 
+            return conn.Query<Product>("select * from product p left join productreview pr on p.Productid = pr.ProductId");
+        }
+
+        public IEnumerable<Product> InnerJoin()
+        {
+            return conn.Query<Product>("select pr.*, p.Name from product p inner join productreview pr on p.Productid = pr.ProductId");
+        }
+
     }
 }
