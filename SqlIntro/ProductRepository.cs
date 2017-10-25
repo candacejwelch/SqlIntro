@@ -71,7 +71,7 @@ namespace SqlIntro
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "update product set name = @name where ProductID = @id";
                 cmd.Parameters.AddWithValue("@name", prod.Name);
-                cmd.Parameters.AddWithValue("@id", prod.Id);
+                cmd.Parameters.AddWithValue("@id", prod.ProductId);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -104,7 +104,6 @@ namespace SqlIntro
                 cmd.Parameters.AddWithValue("@SellStartDate", prod.SellStartDate);
                 cmd.Parameters.AddWithValue("@ListPrice", prod.ListPrice);
                 cmd.Parameters.AddWithValue("@RowGuid", prod.ListPrice);
-
                 cmd.ExecuteNonQuery();
             }
         }

@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SqlIntro
 {
     public class Product
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        public int ProductId { get; set; }
-        public Guid RowGuid { get; set; }
+        public Byte[] RowGuid { get; set; }
         public string ProductNumber { get; set; }
         public double ListPrice { get; set; }
         public bool MakeFlag { get; set; }
@@ -23,7 +23,8 @@ namespace SqlIntro
 
         public Product()
         {
-            RowGuid = Guid.NewGuid();
+            RowGuid = Guid.NewGuid().ToByteArray();
+            
         }
     }
 }
